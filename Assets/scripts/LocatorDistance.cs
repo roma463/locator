@@ -17,7 +17,9 @@ public class LocatorDistance : MonoBehaviour
     {
         if(_playSound)
         {
-            _timeDelay = Vector2.Distance(transform.position, _boomb.position);
+            var distance = Vector2.Distance(transform.position, _boomb.position);
+            _timeDelay = (int)distance * 0.1f;
+            _timeDelay = Mathf.Clamp(_timeDelay, 0.1f, 2f);
             StartCoroutine(nameof(LounthSound));
         }
     }
